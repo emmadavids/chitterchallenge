@@ -16,5 +16,7 @@ class PostRepository:
         self.store.append(post)
         return post
 
-    def _generate_next_id(self):
-        return max([post.id for post in self.store]) + 1
+    def _generate_next_id(self): #
+        if len(self.store) > 0:
+            return max([post.id for post in self.store]) + 1
+        return 1

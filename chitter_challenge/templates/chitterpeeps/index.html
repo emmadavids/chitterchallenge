@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pippety peep</title>
+</head>
+<body>
+    <ul> <div>
+    {% for peep in peeps %}
+    <li>{{ usernames[peep.user_id] }} peeped: {{ peep.content }} at {{ peep.time }}</li>
+            {% endfor %}</div>
+    </ul>
+
+    <h4 class="add">Add a new peep</h4>
+    <form action="/peeps" method="POST">
+        <label for="user">What's your name?</label>
+        <select class="user" id="user" name="user">
+        {% for user in users %}
+            <option class="user-select" value="{{ user.username }}">{{ user.username }}</option>
+        {% endfor %}
+        </select>
+
+        <label for="genre">Write your peep here, chicken</label>
+    <input type="text" name="peep" id="peep">
+    <input type="submit" value="Click to Peep!">
+    </form>
+    Don't see your name in the drop-down? <a href="/peeps/new">Sign up here</a>
+
+</body>
+</html>
